@@ -1,0 +1,16 @@
+name: paper-trade
+on:
+  schedule: [{cron: "7 * * * *"}]
+  workflow_dispatch:
+concurrency: paper
+permissions: {contents: write}
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 paper.py
+        env: {FEE_TAKER: "0.004", SLIPPAGE: "0.0005"}
+      - run: |
+          git config user.name paper-bot; git config user.email paper-bot@users.noreply.github.com
+          git add data books.json; git diff --cached --quiet || git commit -m "paper: $(date -u +%FT%TZ)"; git push

@@ -1,0 +1,55 @@
+{
+ "_note": "Living books. Never edit a live book's params: add a new version (id@vN) and retire the old one. Every change gets a JOURNAL.md entry.",
+ "books": [
+  {
+   "id": "hold_btc@1",
+   "strategy": "hold",
+   "params": {
+    "asset": "BTC"
+   },
+   "status": "benchmark",
+   "started": null
+  },
+  {
+   "id": "trend@1",
+   "strategy": "trend",
+   "params": {
+    "sma": 50
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "mom@1",
+   "strategy": "momentum",
+   "params": {
+    "lookback": 30,
+    "top": 2
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "voltgt@1",
+   "strategy": "voltarget",
+   "params": {
+    "sma": 50,
+    "target": 0.4
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "pullback@1",
+   "strategy": "pullback",
+   "params": {
+    "sma": 100,
+    "dip": -0.05,
+    "days": 3,
+    "hold_days": 5
+   },
+   "status": "active",
+   "started": null
+  }
+ ]
+}
