@@ -5,6 +5,7 @@ by = collections.defaultdict(list)
 for r in csv.DictReader(open(os.path.join(D, "equity.csv"))): by[r["book"]].append((r["time"], float(r["equity"])))
 tp = os.path.join(D, "trades.csv"); nt = collections.Counter(r["book"] for r in csv.DictReader(open(tp))) if os.path.exists(tp) else {}
 bench = dict(by.get("hold_btc@1", []))
+print("Funded: fvq@1 only (GBP 1000 total). Other rows are counterfactual copies of the same GBP 1000, not extra capital.")
 print(f"{'book':12s} {'start':20s} {'return':>8s} {'vsBTC':>8s} {'maxDD':>7s} {'trades':>6s}")
 for b, s in by.items():
     e = [x[1] for x in s]; pk = e[0]; dd = 0

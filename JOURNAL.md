@@ -15,3 +15,6 @@ Pre-registered H1 (fvq@1): passive two-sided quotes +/-0.60% around fair value (
 - Kill: net P&L negative after 4 weeks, or losses dominated by fills that preceded adverse fair-value moves (adverse selection), or fewer than 20 fills (untestable).
 - Expected failure mode: the wide spread exists because the takers are informed arbitrageurs, so our fills are adverse; or volume is too low to fill.
 Benchmark hold_btc@1 kept. Directional random controls retired (no directional books left).
+
+## 2026-11-16 - capital rule
+Only one funded strategy: fvq@1 with £1000 total (shared across all pairs it quotes). Shadows (fvq@1~*), the control (bookq@1) and the benchmark (hold_btc@1) are counterfactual measurements of that same £1000, not extra capital, and are never summed into P&L. A new strategy only gets funding by replacing fvq@1, still within £1000.
