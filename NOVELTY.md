@@ -14,3 +14,9 @@ A search can show an idea is public, never prove it novel. Public ideas are not 
 
 ## Live candidate
 - fvq: passive quotes on thin GBP legs anchored to the liquid USD leg's fair value. Market making in general is public; the claim is not secrecy but capacity (an edge too small for anyone else to bother with). Control bookq anchors to the GBP book instead; if fvq does not beat bookq, the fair-value idea adds nothing.
+
+## 2026-11-16 additions (public-source check still pending for brr, stale, lst)
+- brr@1 benchmark-fixing-window reversal: FX 4pm fix effects are published; crypto BRR window not yet checked.
+- stale@1, fvqx@1: market making / stale-quote picking are known techniques; claim is capacity, not secrecy.
+- monthend@1: calendar effects in crypto are widely published; mined, low confidence.
+- lst@1: LST discount trading is known in DeFi; Kraken mETH/ETH order book specifically not checked.

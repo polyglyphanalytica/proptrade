@@ -230,7 +230,10 @@
     "max_inv_gbp": 150,
     "skew": 0.004,
     "edge": 0.006,
-    "anchor": "fair"
+    "anchor": "fair",
+    "ccys": [
+     "GBP"
+    ]
    },
    "status": "active",
    "started": null
@@ -245,7 +248,10 @@
     "max_inv_gbp": 150,
     "skew": 0.004,
     "edge": 0.004,
-    "anchor": "fair"
+    "anchor": "fair",
+    "ccys": [
+     "GBP"
+    ]
    },
    "status": "shadow",
    "started": null
@@ -260,7 +266,10 @@
     "max_inv_gbp": 150,
     "skew": 0.004,
     "edge": 0.009,
-    "anchor": "fair"
+    "anchor": "fair",
+    "ccys": [
+     "GBP"
+    ]
    },
    "status": "shadow",
    "started": null
@@ -275,7 +284,10 @@
     "max_inv_gbp": 150,
     "skew": 0.004,
     "edge": 0.013,
-    "anchor": "fair"
+    "anchor": "fair",
+    "ccys": [
+     "GBP"
+    ]
    },
    "status": "shadow",
    "started": null
@@ -290,9 +302,139 @@
     "max_inv_gbp": 150,
     "skew": 0.004,
     "edge": 0.006,
-    "anchor": "book"
+    "anchor": "book",
+    "ccys": [
+     "GBP"
+    ]
    },
    "status": "control",
+   "started": null
+  },
+  {
+   "id": "fvqx@1",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "anchor": "fair",
+    "edge": 0.006,
+    "ccys": [
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ]
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "stale@1",
+   "strategy": "stale",
+   "params": {
+    "ccys": [
+     "GBP",
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ],
+    "discount": 0.012,
+    "size_gbp": 100,
+    "max_hold_h": 24
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "stale@1~d20",
+   "strategy": "stale",
+   "params": {
+    "ccys": [
+     "GBP",
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ],
+    "discount": 0.02,
+    "size_gbp": 100,
+    "max_hold_h": 24
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "brr@1",
+   "strategy": "brr",
+   "params": {
+    "drop": -0.015,
+    "hold_h": 4
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "brr@1~d10",
+   "strategy": "brr",
+   "params": {
+    "drop": -0.01,
+    "hold_h": 4
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "brr@1~d20",
+   "strategy": "brr",
+   "params": {
+    "drop": -0.02,
+    "hold_h": 4
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "monthend@1",
+   "strategy": "monthend",
+   "params": {
+    "from_day": 25,
+    "to_day": 1
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "lst@1",
+   "strategy": "lst",
+   "params": {
+    "pair": "METHETH",
+    "mode": "quote",
+    "edge": 0.005
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "lsthold@1",
+   "strategy": "lst",
+   "params": {
+    "pair": "METHETH",
+    "mode": "hold"
+   },
+   "status": "control",
+   "started": null
+  },
+  {
+   "id": "hold_eth@1",
+   "strategy": "hold",
+   "params": {
+    "asset": "ETH"
+   },
+   "status": "benchmark",
    "started": null
   }
  ]

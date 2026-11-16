@@ -44,7 +44,24 @@ def pullback(c, p, s):           # buy sharp dips inside an uptrend, exit after 
 def randtime(c, p, s):          # control: random on/off by UTC day, equal weight, same coins; skill must beat this
     import hashlib; day = int(time.time()//86400); h = int(hashlib.sha256(f"{p['seed']}-{day}".encode()).hexdigest(), 16) % 1000 / 1000
     return {a: 1/len(c) for a in c} if h < p["p"] else {}
-STRATS = dict(randtime=randtime, hold=hold, trend=trend, momentum=momentum, voltarget=voltarget, pullback=pullback)
+def brr(c, p, s):                # buy BTC after a sharp fall in the 15:00-16:00 London benchmark window; hold hold_h hours
+    from zoneinfo import ZoneInfo
+    L = dt.datetime.now(ZoneInfo("Europe/London")); t = time.time()
+    if t < s.get("until", 0): return {"BTC": 1.0}
+    day = L.strftime("%Y-%m-%d")
+    if 16 <= L.hour < 18 and s.get("checked") != day:
+        s["checked"] = day; r = get("OHLC", pair="XBTUSD", interval=60); k = [x for x in r if x != "last"][0]
+        w0 = int(L.replace(hour=15, minute=0, second=0, microsecond=0).timestamp())
+        bar = [x for x in r[k] if int(x[0]) == w0]
+        if bar:
+            ret = float(bar[0][4]) / float(bar[0][1]) - 1; s.setdefault("windows", []).append([day, round(ret, 5)])
+            if ret <= p["drop"]: s["until"] = t + p["hold_h"] * 3600; return {"BTC": 1.0}
+    return {}
+def monthend(c, p, s):           # hold BTC, but stay in cash from the 25th to the 1st (London date)
+    from zoneinfo import ZoneInfo
+    d = dt.datetime.now(ZoneInfo("Europe/London")).day
+    return {} if (d >= p["from_day"] or d <= p["to_day"]) else {"BTC": 1.0}
+STRATS = dict(brr=brr, monthend=monthend, randtime=randtime, hold=hold, trend=trend, momentum=momentum, voltarget=voltarget, pullback=pullback)
 def log_features(now, Q, C):
     ob = {}
     for a, p in PAIRS.items():
@@ -64,29 +81,40 @@ def log_thin(now, U):
     p = os.path.join(D, "thin.csv"); new = not os.path.exists(p)
     with open(p, "a", newline="") as f:
         w = csv.writer(f)
-        if new: w.writerow(["time", "base", "pair", "spread_bp", "vol24h_gbp", "book_mid_vs_fair_bp"])
+        if new: w.writerow(["time", "base", "pair", "spread_bp", "vol24h_usd", "book_mid_vs_fair_bp"])
         for b, u in U.items():
-            if u['eligible']: w.writerow([now, b, u["gbp"], round(u["spread_bp"], 1), round(u["vol"]), round(((u["bid"]+u["ask"])/2/u["fair"]-1)*1e4, 1)])
+            if u["spread_bp"] >= 25: w.writerow([now, u["base"], b, round(u["spread_bp"], 1), round(u["vol_usd"]), round(((u["bid"]+u["ask"])/2/u["fair"]-1)*1e4, 1)])
 def main():
     os.makedirs(D, exist_ok=True); sp = os.path.join(D, "state.json")
     books = json.load(open(os.path.join(ROOT, "books.json"))); st = json.load(open(sp)) if os.path.exists(sp) else {}
     C = {a: closes(p) for a, p in PAIRS.items()}; Q = {a: quote(p) for a, p in PAIRS.items()}
     g = quote("GBPUSD"); gbpusd = (g[0]+g[1])/2
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"); trades = []; eq = []; changed = False
-    QB = [b for b in books["books"] if b["status"] != "retired" and b["strategy"] == "quote"]
+    SPECIAL = ("quote", "stale", "lst")
+    QB = [b for b in books["books"] if b["status"] != "retired" and b["strategy"] in ("quote", "stale")]
     if QB:
         import quoting
-        try: U, _ = quoting.universe(QB[0]["params"]["min_spread_bp"], QB[0]["params"]["min_vol_gbp"])
+        ccys = sorted({c for b in QB for c in b["params"]["ccys"]} | {"GBP"})
+        try: U, fx = quoting.universe(ccys)
         except Exception as e: U = None; print("quote universe failed", e)
         if U is not None:
             for b in QB:
-                s = st.setdefault(b["id"], {"cash": START_GBP, "inv": {}, "start": now})
+                s = st.setdefault(b["id"], {})
                 if b["started"] is None: b["started"] = now; changed = True
-                V, cash = quoting.step(b, s, U, gbpusd, now, trades)
+                fn = quoting.quote_step if b["strategy"] == "quote" else quoting.stale_step
+                try: V, cash = fn(b, s, U, fx, now, trades)
+                except Exception as e: print(b["id"], "failed", e); continue
                 eq.append([now, b["id"], round(V, 2), round(cash, 2), 0, 0, 0])
             log_thin(now, U)
+    for b in [b for b in books["books"] if b["status"] != "retired" and b["strategy"] == "lst"]:
+        import lst
+        s = st.setdefault(b["id"], {})
+        if b["started"] is None: b["started"] = now; changed = True
+        try: V, cash = lst.step({**b, "params": {**b["params"], "_gbp_usd": gbpusd}}, s, now, trades)
+        except Exception as e: print(b["id"], "failed", e); continue
+        eq.append([now, b["id"], round(V, 2), round(cash, 2), 0, 0, 0])
     for b in books["books"]:
-        if b["status"] == "retired" or b["strategy"] == "quote": continue
+        if b["status"] == "retired" or b["strategy"] in SPECIAL: continue
         s = st.setdefault(b["id"], {"cash": START_GBP*gbpusd, "pos": {}, "start": now, "gbpusd0": gbpusd})
         if b["started"] is None: b["started"] = now; changed = True
         mid = {a: (Q[a][0]+Q[a][1])/2 for a in Q}

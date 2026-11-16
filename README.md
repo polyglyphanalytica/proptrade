@@ -6,4 +6,4 @@ Kraken paper-trading research book. Simulated only: public data, no API keys, no
 - `RESEARCH.md`: protocol for evolving strategies (read first)
 - `JOURNAL.md`: hypotheses and changes. Not investment advice.
 
-Capital: one funded strategy (fvq@1, GBP 1000 total). Shadow, control and benchmark books are counterfactual copies of that GBP 1000, not additional capital.
+Capital: every strategy book starts with GBP 1000 (simulated). Shadows, controls and benchmarks are counterfactual comparisons.
