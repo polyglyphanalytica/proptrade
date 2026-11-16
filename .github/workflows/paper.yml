@@ -13,4 +13,5 @@ jobs:
         env: {FEE_TAKER: "0.004", SLIPPAGE: "0.0005"}
       - run: |
           git config user.name paper-bot; git config user.email paper-bot@users.noreply.github.com
-          git add data books.json; git diff --cached --quiet || git commit -m "paper: $(date -u +%FT%TZ)"; git push
+          git add data books.json; git diff --cached --quiet || git commit -m "paper: $(date -u +%FT%TZ)"
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push && break; sleep 5; done
