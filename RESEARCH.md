@@ -8,3 +8,5 @@
 7. Red team: before a book is promoted, a separate reviewer tries to break it (lookahead, survivorship, fee omission, regime dependence).
 8. Score predictions: log predicted vs actual each week to calibrate confidence. Post-mortem every retired book.
 9. Promote to a small live test only if it beats BTC hold risk-adjusted after fees, alpha is positive after beta, and shadow books agree.
+10. Novelty gate: before testing a new idea, search papers/Quantpedia/SSRN/arXiv and record the verdict in NOVELTY.md. Public ideas run only as baselines or controls.
+11. Run `python3 analysis.py` weekly; judge books by alpha after beta, rank vs random controls and neighbour stability, not raw return.

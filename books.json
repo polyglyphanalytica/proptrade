@@ -50,6 +50,156 @@
    },
    "status": "active",
    "started": null
+  },
+  {
+   "id": "trend@1~sma30",
+   "strategy": "trend",
+   "params": {
+    "sma": 30
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "trend@1~sma40",
+   "strategy": "trend",
+   "params": {
+    "sma": 40
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "trend@1~sma75",
+   "strategy": "trend",
+   "params": {
+    "sma": 75
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "trend@1~sma100",
+   "strategy": "trend",
+   "params": {
+    "sma": 100
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "mom@1~lb20top2",
+   "strategy": "momentum",
+   "params": {
+    "lookback": 20,
+    "top": 2
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "mom@1~lb45top2",
+   "strategy": "momentum",
+   "params": {
+    "lookback": 45,
+    "top": 2
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "mom@1~lb30top1",
+   "strategy": "momentum",
+   "params": {
+    "lookback": 30,
+    "top": 1
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "mom@1~lb30top3",
+   "strategy": "momentum",
+   "params": {
+    "lookback": 30,
+    "top": 3
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "pullback@1~dip3",
+   "strategy": "pullback",
+   "params": {
+    "sma": 100,
+    "dip": -0.03,
+    "days": 3,
+    "hold_days": 5
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "pullback@1~dip8",
+   "strategy": "pullback",
+   "params": {
+    "sma": 100,
+    "dip": -0.08,
+    "days": 3,
+    "hold_days": 5
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "rand@1~s1",
+   "strategy": "randtime",
+   "params": {
+    "p": 0.5,
+    "seed": 1
+   },
+   "status": "control",
+   "started": null
+  },
+  {
+   "id": "rand@1~s2",
+   "strategy": "randtime",
+   "params": {
+    "p": 0.5,
+    "seed": 2
+   },
+   "status": "control",
+   "started": null
+  },
+  {
+   "id": "rand@1~s3",
+   "strategy": "randtime",
+   "params": {
+    "p": 0.5,
+    "seed": 3
+   },
+   "status": "control",
+   "started": null
+  },
+  {
+   "id": "rand@1~s4",
+   "strategy": "randtime",
+   "params": {
+    "p": 0.5,
+    "seed": 4
+   },
+   "status": "control",
+   "started": null
+  },
+  {
+   "id": "rand@1~s5",
+   "strategy": "randtime",
+   "params": {
+    "p": 0.5,
+    "seed": 5
+   },
+   "status": "control",
+   "started": null
   }
  ]
 }

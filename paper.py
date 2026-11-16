@@ -41,7 +41,10 @@ def pullback(c, p, s):           # buy sharp dips inside an uptrend, exit after 
         held.pop(a, None)
         if x[-1]/x[-1-p["days"]]-1 <= p["dip"]: held[a] = today; w[a] = 1/len(c)
     return w
-STRATS = dict(hold=hold, trend=trend, momentum=momentum, voltarget=voltarget, pullback=pullback)
+def randtime(c, p, s):          # control: random on/off by UTC day, equal weight, same coins; skill must beat this
+    import hashlib; day = int(time.time()//86400); h = int(hashlib.sha256(f"{p['seed']}-{day}".encode()).hexdigest(), 16) % 1000 / 1000
+    return {a: 1/len(c) for a in c} if h < p["p"] else {}
+STRATS = dict(randtime=randtime, hold=hold, trend=trend, momentum=momentum, voltarget=voltarget, pullback=pullback)
 def log_features(now, Q, C):
     ob = {}
     for a, p in PAIRS.items():
