@@ -8,7 +8,7 @@
     "asset": "BTC"
    },
    "status": "benchmark",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "trend@1",
@@ -236,7 +236,7 @@
     ]
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "fvq@1~e40",
@@ -254,7 +254,7 @@
     ]
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "fvq@1~e90",
@@ -272,7 +272,7 @@
     ]
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "fvq@1~e130",
@@ -290,7 +290,7 @@
     ]
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "bookq@1",
@@ -308,7 +308,7 @@
     ]
    },
    "status": "control",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "fvqx@1",
@@ -329,7 +329,7 @@
     ]
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "stale@1",
@@ -347,7 +347,7 @@
     "max_hold_h": 24
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "stale@1~d20",
@@ -365,7 +365,7 @@
     "max_hold_h": 24
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "brr@1",
@@ -375,7 +375,7 @@
     "hold_h": 4
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "brr@1~d10",
@@ -385,7 +385,7 @@
     "hold_h": 4
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "brr@1~d20",
@@ -395,7 +395,7 @@
     "hold_h": 4
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "monthend@1",
@@ -405,7 +405,7 @@
     "to_day": 1
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "lst@1",
@@ -416,7 +416,7 @@
     "edge": 0.005
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "lsthold@1",
@@ -426,7 +426,7 @@
     "mode": "hold"
    },
    "status": "control",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   },
   {
    "id": "hold_eth@1",
@@ -435,7 +435,7 @@
     "asset": "ETH"
    },
    "status": "benchmark",
-   "started": null
+   "started": "2026-11-16T20:53:17Z"
   }
  ]
 }
