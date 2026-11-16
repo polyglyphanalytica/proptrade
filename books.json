@@ -16,8 +16,9 @@
    "params": {
     "sma": 50
    },
-   "status": "active",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "mom@1",
@@ -26,8 +27,9 @@
     "lookback": 30,
     "top": 2
    },
-   "status": "active",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "voltgt@1",
@@ -36,8 +38,9 @@
     "sma": 50,
     "target": 0.4
    },
-   "status": "active",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "pullback@1",
@@ -48,8 +51,9 @@
     "days": 3,
     "hold_days": 5
    },
-   "status": "active",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "trend@1~sma30",
@@ -57,8 +61,9 @@
    "params": {
     "sma": 30
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "trend@1~sma40",
@@ -66,8 +71,9 @@
    "params": {
     "sma": 40
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "trend@1~sma75",
@@ -75,8 +81,9 @@
    "params": {
     "sma": 75
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "trend@1~sma100",
@@ -84,8 +91,9 @@
    "params": {
     "sma": 100
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "mom@1~lb20top2",
@@ -94,8 +102,9 @@
     "lookback": 20,
     "top": 2
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "mom@1~lb45top2",
@@ -104,8 +113,9 @@
     "lookback": 45,
     "top": 2
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "mom@1~lb30top1",
@@ -114,8 +124,9 @@
     "lookback": 30,
     "top": 1
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "mom@1~lb30top3",
@@ -124,8 +135,9 @@
     "lookback": 30,
     "top": 3
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "pullback@1~dip3",
@@ -136,8 +148,9 @@
     "days": 3,
     "hold_days": 5
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "pullback@1~dip8",
@@ -148,8 +161,9 @@
     "days": 3,
     "hold_days": 5
    },
-   "status": "shadow",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "rand@1~s1",
@@ -158,8 +172,9 @@
     "p": 0.5,
     "seed": 1
    },
-   "status": "control",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "rand@1~s2",
@@ -168,8 +183,9 @@
     "p": 0.5,
     "seed": 2
    },
-   "status": "control",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "rand@1~s3",
@@ -178,8 +194,9 @@
     "p": 0.5,
     "seed": 3
    },
-   "status": "control",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "rand@1~s4",
@@ -188,8 +205,9 @@
     "p": 0.5,
     "seed": 4
    },
-   "status": "control",
-   "started": null
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
   },
   {
    "id": "rand@1~s5",
@@ -197,6 +215,82 @@
    "params": {
     "p": 0.5,
     "seed": 5
+   },
+   "status": "retired",
+   "started": null,
+   "retired_reason": "public strategy (see NOVELTY.md); abandoned 2026-11-16 before start"
+  },
+  {
+   "id": "fvq@1",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.006,
+    "anchor": "fair"
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "fvq@1~e40",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.004,
+    "anchor": "fair"
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "fvq@1~e90",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.009,
+    "anchor": "fair"
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "fvq@1~e130",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.013,
+    "anchor": "fair"
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "bookq@1",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.006,
+    "anchor": "book"
    },
    "status": "control",
    "started": null

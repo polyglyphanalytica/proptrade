@@ -60,14 +60,33 @@ def log_features(now, Q, C):
         w = csv.writer(f)
         if new: w.writerow(["time"] + [f"{a}_{k}" for a in PAIRS for k in ("mid", "spread", "obi10", "vol24h")] + ["btc_gbp_prem"])
         w.writerow(row)
+def log_thin(now, U):
+    p = os.path.join(D, "thin.csv"); new = not os.path.exists(p)
+    with open(p, "a", newline="") as f:
+        w = csv.writer(f)
+        if new: w.writerow(["time", "base", "pair", "spread_bp", "vol24h_gbp", "book_mid_vs_fair_bp"])
+        for b, u in U.items():
+            if u['eligible']: w.writerow([now, b, u["gbp"], round(u["spread_bp"], 1), round(u["vol"]), round(((u["bid"]+u["ask"])/2/u["fair"]-1)*1e4, 1)])
 def main():
     os.makedirs(D, exist_ok=True); sp = os.path.join(D, "state.json")
     books = json.load(open(os.path.join(ROOT, "books.json"))); st = json.load(open(sp)) if os.path.exists(sp) else {}
     C = {a: closes(p) for a, p in PAIRS.items()}; Q = {a: quote(p) for a, p in PAIRS.items()}
     g = quote("GBPUSD"); gbpusd = (g[0]+g[1])/2
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"); trades = []; eq = []; changed = False
+    QB = [b for b in books["books"] if b["status"] != "retired" and b["strategy"] == "quote"]
+    if QB:
+        import quoting
+        try: U, _ = quoting.universe(QB[0]["params"]["min_spread_bp"], QB[0]["params"]["min_vol_gbp"])
+        except Exception as e: U = None; print("quote universe failed", e)
+        if U is not None:
+            for b in QB:
+                s = st.setdefault(b["id"], {"cash": START_GBP, "inv": {}, "start": now})
+                if b["started"] is None: b["started"] = now; changed = True
+                V, cash = quoting.step(b, s, U, gbpusd, now, trades)
+                eq.append([now, b["id"], round(V, 2), round(cash, 2), 0, 0, 0])
+            log_thin(now, U)
     for b in books["books"]:
-        if b["status"] == "retired": continue
+        if b["status"] == "retired" or b["strategy"] == "quote": continue
         s = st.setdefault(b["id"], {"cash": START_GBP*gbpusd, "pos": {}, "start": now, "gbpusd0": gbpusd})
         if b["started"] is None: b["started"] = now; changed = True
         mid = {a: (Q[a][0]+Q[a][1])/2 for a in Q}
