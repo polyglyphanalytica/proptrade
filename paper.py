@@ -84,7 +84,14 @@ def log_thin(now, U):
         if new: w.writerow(["time", "base", "pair", "spread_bp", "vol24h_usd", "book_mid_vs_fair_bp"])
         for b, u in U.items():
             if u["spread_bp"] >= 25: w.writerow([now, u["base"], b, round(u["spread_bp"], 1), round(u["vol_usd"]), round(((u["bid"]+u["ask"])/2/u["fair"]-1)*1e4, 1)])
+def due():
+    p = os.path.join(D, "equity.csv")
+    if os.getenv("FORCE") or not os.path.exists(p): return True
+    last = open(p).read().strip().splitlines()[-1].split(",")[0]
+    age = time.time() - dt.datetime.strptime(last, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc).timestamp()
+    return age >= 50 * 60
 def main():
+    if not due(): print("last run < 50 min ago; skipping"); return
     os.makedirs(D, exist_ok=True); sp = os.path.join(D, "state.json")
     books = json.load(open(os.path.join(ROOT, "books.json"))); st = json.load(open(sp)) if os.path.exists(sp) else {}
     C = {a: closes(p) for a, p in PAIRS.items()}; Q = {a: quote(p) for a, p in PAIRS.items()}

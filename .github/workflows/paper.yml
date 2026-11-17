@@ -1,6 +1,6 @@
 name: paper-trade
 on:
-  schedule: [{cron: "17 * * * *"}]
+  schedule: [{cron: "*/15 * * * *"}]   # GitHub drops some cron slots; paper.py skips if the last run was < 50 min ago
   workflow_dispatch:
 concurrency: paper
 permissions: {contents: write}
