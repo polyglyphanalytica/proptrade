@@ -2,3 +2,4 @@
 - 2026-11-17 00:18 UTC: no run in last 55 min (last 23:19 UTC); dispatched paper.yml run 43986580024 → success.
 - 2026-11-17 01:18 UTC: no run in last 55 min (last 00:18 UTC); dispatched paper.yml run 43994577550 → success.
 - 2026-11-17 02:18 UTC: no run in last 55 min (last 01:18 UTC); dispatched paper.yml run 44002051336 → success.
+- 2026-11-17 04:21 UTC — No run since 02:18 UTC (03:18 run missing). Dispatched paper.yml; run 44016278449 failed before starting: GitHub Actions blocked by billing (failed payment / spending limit). Not transient, no retry. Needs Billing & plans fix.
