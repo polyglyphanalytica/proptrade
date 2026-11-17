@@ -5,3 +5,4 @@
 - 2026-11-17 04:21 UTC — No run since 02:18 UTC (03:18 run missing). Dispatched paper.yml; run 44016278449 failed before starting: GitHub Actions blocked by billing (failed payment / spending limit). Not transient, no retry. Needs Billing & plans fix.
 - 2026-11-17 05:20 UTC — Still blocked by billing: scheduled run 44017443116 (04:28) and dispatched run 44023207284 failed before starting (failed payment / spending limit). Not transient, no retry. Needs Billing & plans fix.
 - 2026-11-17 06:22 UTC — Still blocked by billing: dispatched run 44030291624 failed before starting (failed payment / spending limit). Not transient, no retry. Needs Billing & plans fix.
+- 2026-11-17 07:21 UTC — Still blocked by billing: run 44033857290 (06:47) and dispatched run 44037775682 failed before starting (failed payment / spending limit). Not transient, no retry. Needs Billing & plans fix.
