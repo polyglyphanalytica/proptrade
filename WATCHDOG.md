@@ -7,3 +7,4 @@
 - 2026-11-17 06:22 UTC — Still blocked by billing: dispatched run 44030291624 failed before starting (failed payment / spending limit). Not transient, no retry. Needs Billing & plans fix.
 - 2026-11-17 07:21 UTC — Still blocked by billing: run 44033857290 (06:47) and dispatched run 44037775682 failed before starting (failed payment / spending limit). Not transient, no retry. Needs Billing & plans fix.
 - 2026-11-18 14:51 UTC — Stale (last equity 13:11 UTC, 98 min; no scheduled run since 06:54). Dispatched paper.yml run 44328481623 → success, new row 14:49 UTC.
+- 2026-11-18 17:52 UTC — Stale (last equity 16:11 UTC, 98 min; no scheduled run since 16:11). Dispatched paper.yml run 44362879561 → success, new row 17:49 UTC.
