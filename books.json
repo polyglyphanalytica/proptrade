@@ -675,6 +675,26 @@
    },
    "status": "shadow",
    "started": "2026-11-19T11:00:51Z"
+  },
+  {
+   "id": "pmlvl@1",
+   "strategy": "pmlvl",
+   "params": {
+    "enter": 0.4,
+    "exit": -0.1
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "pmlvl@1~med",
+   "strategy": "pmlvl",
+   "params": {
+    "enter": 0.195,
+    "exit": 0.195
+   },
+   "status": "shadow",
+   "started": null
   }
  ]
 }

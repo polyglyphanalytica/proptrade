@@ -61,7 +61,18 @@ def monthend(c, p, s):           # hold BTC, but stay in cash from the 25th to t
     from zoneinfo import ZoneInfo
     d = dt.datetime.now(ZoneInfo("Europe/London")).day
     return {} if (d >= p["from_day"] or d <= p["to_day"]) else {"BTC": 1.0}
-STRATS = dict(brr=brr, monthend=monthend, randtime=randtime, hold=hold, trend=trend, momentum=momentum, voltarget=voltarget, pullback=pullback)
+def pmlvl(c, p, s):              # Polymarket BTC ladder level, read once per UTC day; hysteresis: BTC when level > enter, cash when < exit
+    import pm
+    day = time.strftime("%Y-%m-%d", time.gmtime())
+    if s.get("day") != day:
+        s["day"] = day
+        try: x = pm.level()
+        except Exception as e: x = None; print("pm level failed", e)
+        if x:
+            L = x["level"]; s.setdefault("log", []).append([day, round(L, 4)])
+            s["on"] = True if L > p["enter"] else (False if L < p["exit"] else s.get("on", False))
+    return {"BTC": 1.0} if s.get("on") else {}
+STRATS = dict(pmlvl=pmlvl, brr=brr, monthend=monthend, randtime=randtime, hold=hold, trend=trend, momentum=momentum, voltarget=voltarget, pullback=pullback)
 def log_features(now, Q, C):
     ob = {}
     for a, p in PAIRS.items():
@@ -155,5 +166,12 @@ def main():
             if new: w_.writerow(hdr)
             w_.writerows(rows)
     log_features(now, Q, C)
+    try:    # Polymarket BTC ladder vs Kraken realised vol, logged hourly (data only)
+        import pm; x = pm.level(); p = os.path.join(D, "polymarket.csv"); new = not os.path.exists(p)
+        with open(p, "a", newline="") as f:
+            w_ = csv.writer(f)
+            if new: w_.writerow(["time", "slug", "level", "up", "dn", "n_up", "n_dn", "btc_usd", "sigma30"])
+            if x: w_.writerow([now, x["slug"], round(x["level"], 4), round(x["up"], 4), round(x["dn"], 4), x["n_up"], x["n_dn"], round(x["spot"], 2), round(x["sigma"], 4)])
+    except Exception as e: print("polymarket log failed", e)
     print(now, {r[1]: r[2] for r in eq}, len(trades), "trades")
 if __name__ == "__main__": main()

@@ -25,3 +25,4 @@ A search can show an idea is public, never prove it novel. Public ideas are not 
 - Perpetual-leads-spot price discovery: published (arXiv 2506.08718, "Price Discovery in Cryptocurrency Markets"; earlier BitMEX/CME lead-lag studies). Not traded as a directional signal. fvp@1/fvpx@1 use it only to anchor capacity-limited quoting on thin fiat legs (same capacity claim as fvq).
 - Funding-rate carry, basis trades, funding/OI contrarian signals: published, and need derivatives (FCA rule). Excluded.
 - Polymarket crypto threshold markets vs Kraken-implied probability: excluded while the FCA's 2019 binary-option ban covers UK retail.
+- Polymarket BTC thresholds overpriced vs options: published (arXiv 2606.19517, cross-venue hedged trade). Using the time-varying gap as a spot timing signal: no published test found; our own check is null (JOURNAL 2026-11-19). Polymarket sentiment trackers exist (e.g. wangr.com) but show no return tests.
