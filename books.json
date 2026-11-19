@@ -684,7 +684,7 @@
     "exit": -0.1
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-19T12:19:10Z"
   },
   {
    "id": "pmlvl@1~med",
@@ -694,7 +694,7 @@
     "exit": 0.195
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T12:19:10Z"
   }
  ]
 }
