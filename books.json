@@ -454,7 +454,7 @@
     "universe": "perp"
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "fvp@1~e90",
@@ -473,7 +473,7 @@
     "universe": "perp"
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "fvqp@1",
@@ -492,7 +492,7 @@
     "universe": "perp"
    },
    "status": "control",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "fvpx@1",
@@ -514,7 +514,7 @@
     "universe": "perp"
    },
    "status": "active",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "fvqxp@1",
@@ -536,7 +536,7 @@
     "universe": "perp"
    },
    "status": "control",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "fvqx@1~e90",
@@ -557,7 +557,7 @@
     ]
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "fvqx@1~e130",
@@ -578,7 +578,7 @@
     ]
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "fvq@1~v100",
@@ -596,7 +596,7 @@
     ]
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "stale@1~d30",
@@ -614,7 +614,7 @@
     "max_hold_h": 24
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "stale@1~h6",
@@ -632,7 +632,7 @@
     "max_hold_h": 6
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "brr@1~d05",
@@ -642,7 +642,7 @@
     "hold_h": 4
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "brr@1~h8",
@@ -652,7 +652,7 @@
     "hold_h": 8
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "lst@1~e30",
@@ -663,7 +663,7 @@
     "edge": 0.003
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   },
   {
    "id": "lst@1~e80",
@@ -674,7 +674,7 @@
     "edge": 0.008
    },
    "status": "shadow",
-   "started": null
+   "started": "2026-11-19T11:00:51Z"
   }
  ]
 }
