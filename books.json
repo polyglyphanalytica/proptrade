@@ -436,6 +436,245 @@
    },
    "status": "benchmark",
    "started": "2026-11-16T20:53:17Z"
+  },
+  {
+   "id": "fvp@1",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.006,
+    "anchor": "perp",
+    "ccys": [
+     "GBP"
+    ],
+    "universe": "perp"
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "fvp@1~e90",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.009,
+    "anchor": "perp",
+    "ccys": [
+     "GBP"
+    ],
+    "universe": "perp"
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "fvqp@1",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.006,
+    "anchor": "fair",
+    "ccys": [
+     "GBP"
+    ],
+    "universe": "perp"
+   },
+   "status": "control",
+   "started": null
+  },
+  {
+   "id": "fvpx@1",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "anchor": "perp",
+    "edge": 0.006,
+    "ccys": [
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ],
+    "universe": "perp"
+   },
+   "status": "active",
+   "started": null
+  },
+  {
+   "id": "fvqxp@1",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "anchor": "fair",
+    "edge": 0.006,
+    "ccys": [
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ],
+    "universe": "perp"
+   },
+   "status": "control",
+   "started": null
+  },
+  {
+   "id": "fvqx@1~e90",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "anchor": "fair",
+    "edge": 0.009,
+    "ccys": [
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ]
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "fvqx@1~e130",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 300,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "anchor": "fair",
+    "edge": 0.013,
+    "ccys": [
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ]
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "fvq@1~v100",
+   "strategy": "quote",
+   "params": {
+    "min_spread_bp": 40,
+    "min_vol_gbp": 100,
+    "size_gbp": 50,
+    "max_inv_gbp": 150,
+    "skew": 0.004,
+    "edge": 0.006,
+    "anchor": "fair",
+    "ccys": [
+     "GBP"
+    ]
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "stale@1~d30",
+   "strategy": "stale",
+   "params": {
+    "ccys": [
+     "GBP",
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ],
+    "discount": 0.03,
+    "size_gbp": 100,
+    "max_hold_h": 24
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "stale@1~h6",
+   "strategy": "stale",
+   "params": {
+    "ccys": [
+     "GBP",
+     "EUR",
+     "CAD",
+     "AUD",
+     "CHF"
+    ],
+    "discount": 0.012,
+    "size_gbp": 100,
+    "max_hold_h": 6
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "brr@1~d05",
+   "strategy": "brr",
+   "params": {
+    "drop": -0.005,
+    "hold_h": 4
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "brr@1~h8",
+   "strategy": "brr",
+   "params": {
+    "drop": -0.015,
+    "hold_h": 8
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "lst@1~e30",
+   "strategy": "lst",
+   "params": {
+    "pair": "METHETH",
+    "mode": "quote",
+    "edge": 0.003
+   },
+   "status": "shadow",
+   "started": null
+  },
+  {
+   "id": "lst@1~e80",
+   "strategy": "lst",
+   "params": {
+    "pair": "METHETH",
+    "mode": "quote",
+    "edge": 0.008
+   },
+   "status": "shadow",
+   "started": null
   }
  ]
 }

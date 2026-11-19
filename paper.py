@@ -104,6 +104,9 @@ def main():
         ccys = sorted({c for b in QB for c in b["params"]["ccys"]} | {"GBP"})
         try: U, fx = quoting.universe(ccys)
         except Exception as e: U = None; print("quote universe failed", e)
+        if U is not None and any(b["params"].get("anchor") == "perp" for b in QB):
+            try: quoting.add_perp(U)
+            except Exception as e: print("perp tickers failed (perp books only unwind this run)", e)
         if U is not None:
             for b in QB:
                 s = st.setdefault(b["id"], {})

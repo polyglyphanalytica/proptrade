@@ -14,12 +14,20 @@ def get(path):
         except Exception: pass
         time.sleep(2)
     raise RuntimeError(path)
+SYM = {"XDG": "DOGE"}           # spot wsname -> Kraken Futures symbol where they differ
+def add_perp(U):
+    """Attach Kraken Futures perpetual mid (USD) to each universe entry as u["perp"] (None if no perp). Data only: no derivatives are traded."""
+    r = json.load(urllib.request.urlopen("https://futures.kraken.com/derivatives/api/v3/tickers", timeout=25))
+    pm = {t["symbol"][3:-3]: (float(t["bid"]) + float(t["ask"])) / 2 for t in r["tickers"]
+          if t["symbol"].startswith("PF_") and t["symbol"].endswith("USD") and not t.get("suspended") and t.get("bid") and t.get("ask")}
+    for u in U.values():
+        x = pm.get(u["sym"]); u["perp"] = x if x and abs(x / u["usd_mid"] - 1) < 0.02 else None   # >2% off spot = different contract size/asset: ignore
 def mid(t): return (float(t["b"][0]) + float(t["a"][0])) / 2
 def universe(ccys):
-    ap = get("AssetPairs"); usd = {}; thin = []
+    ap = get("AssetPairs"); usd = {}; sym = {}; thin = []
     for k, v in ap.items():
         if k.endswith(".d") or v.get("status", "online") != "online": continue
-        if v["quote"] == "ZUSD": usd[v["base"]] = k
+        if v["quote"] == "ZUSD": usd[v["base"]] = k; sym[v["base"]] = v.get("wsname", v["base"]).split("/")[0]
         if QC.get(v["quote"]) in ccys: thin.append((k, v["base"], QC[v["quote"]]))
     skip = {"XXBT", "XETH", "USDC", "USDT", "ZEUR", "ZGBP", "ZUSD"}
     thin = [x for x in thin if x[1] in usd and x[1] not in skip]
@@ -34,7 +42,7 @@ def universe(ccys):
         bid, ask = float(tg["b"][0]), float(tg["a"][0])
         if bid <= 0 or ask <= 0: continue
         m = (bid + ask) / 2; um = mid(tu)
-        U[k] = dict(pair=k, base=b, ccy=c, bid=bid, ask=ask, fair=um / fx[c], spread_bp=(ask - bid) / m * 1e4,
+        U[k] = dict(pair=k, base=b, sym=SYM.get(sym[b], sym[b]), usd_mid=um, ccy=c, bid=bid, ask=ask, fair=um / fx[c], spread_bp=(ask - bid) / m * 1e4,
                     vol_usd=float(tg["v"][1]) * float(tg["c"][0]) * fx[c])
     return U, fx
 def trades_since(pair, since):
@@ -65,16 +73,20 @@ def _value(s, U, fx):
     for k in U: s["mark"][k] = U[k]["fair"] * fx[U[k]["ccy"]]
     return sum(v * fx[c] for c, v in s["cash"].items()) + sum(q * s["mark"].get(k, 0) for k, q in s["inv"].items())
 def quote_step(book, s, U, fx, now, out):
-    """Two-sided passive quotes around an anchor. params: ccys, edge, size_gbp, max_inv_gbp, skew, min_spread_bp, min_vol_gbp, anchor."""
+    """Two-sided passive quotes around an anchor. params: ccys, edge, size_gbp, max_inv_gbp, skew, min_spread_bp, min_vol_gbp,
+    anchor ("fair" = USD spot mid / fx, "perp" = Kraken Futures perp mid / fx, "book" = own mid), optional universe ("perp" = only pairs with a perp)."""
     p = book["params"]; _init(s, p, fx, now); _settle(book, s, now, out)
-    ok = [k for k, u in U.items() if u["ccy"] in p["ccys"] and u["spread_bp"] >= p["min_spread_bp"] and u["vol_usd"] >= p["min_vol_gbp"] * fx["GBP"]]
+    ok = [k for k, u in U.items() if u["ccy"] in p["ccys"] and u["spread_bp"] >= p["min_spread_bp"] and u["vol_usd"] >= p["min_vol_gbp"] * fx["GBP"]
+          and (p.get("universe") != "perp" or u.get("perp"))]
     ok = set(sorted(ok, key=lambda k: -U[k]["vol_usd"])[:p.get("max_pairs", 40)])     # cap API calls / runtime
     for k, u in U.items():
         if u["ccy"] not in p["ccys"]: continue
         elig = k in ok
         held = s["inv"].get(k, 0)
         if not elig and held <= 0: continue
-        a = u["fair"] if p["anchor"] == "fair" else (u["bid"] + u["ask"]) / 2
+        if p["anchor"] == "perp": a = u["perp"] / fx[u["ccy"]] if u.get("perp") else u["fair"]   # no perp: fall back to spot fair (unwind only)
+        else: a = u["fair"] if p["anchor"] == "fair" else (u["bid"] + u["ask"]) / 2
+        if p["anchor"] == "perp" and not u.get("perp"): elig = False
         g = fx[u["ccy"]] / fx["GBP"]                                    # GBP per unit of ccy
         inv_gbp = held * a * g; sk = p["skew"] * inv_gbp / p["max_inv_gbp"]
         bid = min(a * (1 - p["edge"] - sk), u["ask"] * (1 - 1e-4)); ask = max(a * (1 + p["edge"] - sk), u["bid"] * (1 + 1e-4))

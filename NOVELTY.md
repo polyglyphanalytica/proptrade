@@ -20,3 +20,8 @@ A search can show an idea is public, never prove it novel. Public ideas are not 
 - stale@1, fvqx@1: market making / stale-quote picking are known techniques; claim is capacity, not secrecy.
 - monthend@1: calendar effects in crypto are widely published; mined, low confidence.
 - lst@1: LST discount trading is known in DeFi; Kraken mETH/ETH order book specifically not checked.
+
+## 2026-11-19 additions
+- Perpetual-leads-spot price discovery: published (arXiv 2506.08718, "Price Discovery in Cryptocurrency Markets"; earlier BitMEX/CME lead-lag studies). Not traded as a directional signal. fvp@1/fvpx@1 use it only to anchor capacity-limited quoting on thin fiat legs (same capacity claim as fvq).
+- Funding-rate carry, basis trades, funding/OI contrarian signals: published, and need derivatives (FCA rule). Excluded.
+- Polymarket crypto threshold markets vs Kraken-implied probability: excluded while the FCA's 2019 binary-option ban covers UK retail.
