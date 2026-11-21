@@ -42,3 +42,4 @@
 - 2026-11-20 21:48 UTC — Stale (last equity 20:19 UTC, 89 min; scheduled run 18:51 was last). Dispatched paper.yml run 44823633596 → success, new row 21:49 UTC.
 - 2026-11-20 23:19 UTC — Stale (last equity 21:49 UTC, 90 min; scheduled run 18:51 was last). Dispatched paper.yml run 44835890507 → success, new row 23:19 UTC.
 - 2026-11-21 01:48 UTC — Stale (last equity 00:38 UTC, 70 min; scheduled run 00:38 was last). Dispatched paper.yml run 44852347795 → success, new row 01:48 UTC.
+- 2026-11-21 03:19 UTC — Stale (last equity 01:48 UTC, 90 min; scheduled run 00:38 was last). Dispatched paper.yml run 44860485179 → success, new row 03:19 UTC.
