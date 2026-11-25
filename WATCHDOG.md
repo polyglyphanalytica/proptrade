@@ -94,3 +94,4 @@
 - 2026-11-25 16:25 UTC: equity stale (last 14:19Z, ~120 min), no run active. First dispatch returned HTTP 500; retry 20s later queued paper.yml run 45652594915 -> success, new row 16:19:36Z. Recovered from 15:55 dispatch-500 issue; no further alert.
 - 2026-11-25 17:49 UTC: equity stale (last 16:19Z, ~90 min), no run active. Dispatched paper.yml run 45668785269 (queued ~5 min before starting) -> success, new row 17:49:35Z. No alert.
 - 2026-11-25 19:19 UTC: equity stale (last 17:49Z, ~90 min), no run active. Dispatched paper.yml run 45684024647 -> success, new row 19:19:28Z. No alert.
+- 2026-11-25 20:49 UTC: equity stale (last 19:19Z, ~90 min), no run active. Dispatched paper.yml run 45698620902 -> success, new row 20:49:39Z. No alert (quiet hours).
