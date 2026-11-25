@@ -92,3 +92,4 @@
 - 2026-11-25 14:19 UTC: equity stale (last 12:50Z, 88 min), no run active. Dispatched paper.yml run 45632722053 -> success, new row 14:19:11Z. No alert.
 - 2026-11-25 15:55 UTC: equity stale (last 14:19Z, ~95 min), no run active. Dispatch of paper.yml failed 4x with GitHub API HTTP 500 (15:49-15:55, by filename and numeric id 420519363); workflow state active; no run created. ALERT sent (cause: dispatch API 500). Next watchdog will retry.
 - 2026-11-25 16:25 UTC: equity stale (last 14:19Z, ~120 min), no run active. First dispatch returned HTTP 500; retry 20s later queued paper.yml run 45652594915 -> success, new row 16:19:36Z. Recovered from 15:55 dispatch-500 issue; no further alert.
+- 2026-11-25 17:49 UTC: equity stale (last 16:19Z, ~90 min), no run active. Dispatched paper.yml run 45668785269 (queued ~5 min before starting) -> success, new row 17:49:35Z. No alert.
