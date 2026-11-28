@@ -135,3 +135,4 @@
 - 2026-11-28 10:18 UTC: equity stale (last 08:48Z, ~90 min), no run active; dispatched paper.yml run 46134563231 (queued ~5 min) -> success, new row 2026-11-28T10:18:47Z. No alert.
 - 2026-11-28 11:48 UTC: equity stale (last 10:18Z, ~90 min), no run active; dispatched paper.yml run 46141628291 -> success, new row 2026-11-28T11:48:54Z. No alert.
 - 2026-11-28 13:18 UTC: equity stale (last 11:48Z, ~90 min), no run active; dispatched paper.yml run 46148989922 -> success, new row 2026-11-28T13:19:00Z. No alert.
+- 2026-11-28 14:49 UTC: equity stale (last 13:19Z, ~90 min; 13:38 scheduled run skipped under 50-min guard), no run active; dispatched paper.yml run 46156619895 -> success, new row 2026-11-28T14:49:29Z. No alert.
